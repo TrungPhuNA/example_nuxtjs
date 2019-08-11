@@ -1,22 +1,6 @@
 <template>
     <div class="wrapper">
         <div class="container">
-            <div class="header">
-                <div class="header_logo">
-                    <nuxt-link to="/">
-                        <img src="~/assets/images/logo.png" alt="">
-                    </nuxt-link>
-                    <!-- <a href=""></a> -->
-                </div>
-                <div class="header_search_account">
-                    <div class="header_link">
-                        <nuxt-link to="/auth/register">Đăng Ký</nuxt-link>
-                        <nuxt-link to="/auth/login">Đăng Nhập</nuxt-link>
-                    </div>
-                </div>
-            </div>
-        </div> 
-        <div class="container">
             <div class="menu">
                 <ul>
                     <li>
@@ -38,8 +22,14 @@
     </div>  
 </template>
 
-<style>
+<script>
+    @import header from './../components/header.vue';
+    // export default {
 
+    // }
+</script>
+
+<style>
     html {
         font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
             Roboto, 'Helvetica Neue', Arial, sans-serif;

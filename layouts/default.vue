@@ -3,14 +3,15 @@
         <div class="container">
             <div class="header">
                 <div class="header_logo">
-                    <a href="">
+                    <nuxt-link to="/">
                         <img src="~/assets/images/logo.png" alt="">
-                    </a>
+                    </nuxt-link>
+                    <!-- <a href=""></a> -->
                 </div>
                 <div class="header_search_account">
                     <div class="header_link">
-                        <a href="">Đăng Ký</a>
-                        <a href="">Đăng Nhập</a>
+                        <nuxt-link to="/auth/register">Đăng Ký</nuxt-link>
+                        <nuxt-link to="/auth/login">Đăng Nhập</nuxt-link>
                     </div>
                 </div>
             </div>
@@ -19,16 +20,16 @@
             <div class="menu">
                 <ul>
                     <li>
-                        <a href="/">Home</a>
+                        <nuxt-link to="/">Home</nuxt-link>
                     </li>
                     <li>
-                        <a href="/about">About</a>
+                        <nuxt-link to="/about">About</nuxt-link>
                     </li>
                     <li>
-                        <a href="/article">Blog</a>
+                        <nuxt-link to="/article">Blog</nuxt-link>
                     </li>
                     <li>
-                        <a href="">Product</a>
+                        <nuxt-link to="/">Product</nuxt-link>
                     </li>
                 </ul>  
             </div>

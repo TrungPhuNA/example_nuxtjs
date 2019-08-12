@@ -5,7 +5,7 @@
         <Header></Header>
         <!-- <Menu/> -->
         <div class="container">
-            <route-vue></route-vue>
+            <!-- <route-vue></route-vue> -->
             <nuxt />
         </div>
         <!-- <vue-progress-bar></vue-progress-bar> -->

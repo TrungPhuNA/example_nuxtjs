@@ -14,8 +14,8 @@
 
 <script>
     import Vue from "vue";
-    import Header from "./../components/Header";
-    import Menu from "./../components/Menu";
+    import Header from "~/components/Header";
+    import Menu from "~/components/Menu";
     
     // new Vue({
     //     router: router,

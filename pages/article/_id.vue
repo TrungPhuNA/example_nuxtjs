@@ -39,7 +39,8 @@
     export default {
         data () {
             return {
-                url : `http://demo.mmolab.abc/api/article`,
+                
+                url : `http://mmov2.codethue.net/api/article`,
                 article: null,
                 id : null
             }

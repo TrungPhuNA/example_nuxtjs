@@ -14,8 +14,8 @@
 
 <script>
     import Vue from "vue";
-    import AppHeader from "~/components/AppHeader";
-    import AppMenu from "~/components/AppMenu";
+    import Header from "~/components/AppHeader";
+    import Menu from "~/components/AppMenu";
     
     // new Vue({
     //     router: router,
@@ -23,7 +23,7 @@
 
     export default {
         components : {
-           AppHeader, AppMenu 
+           Header, Menu 
         }
     }
 </script>

@@ -1,4 +1,4 @@
-
+const router = require("./router/index");
 export default {
   mode: 'universal',
   /*
@@ -29,6 +29,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    // 'reading-progress'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -40,6 +41,15 @@ export default {
   */
   modules: [
   ],
+  /**
+   * register route
+   */
+    router: {
+    extendRoutes(routes, resolve) {
+        let arrayRouter = router.arrayRouter();
+            arrayRouter.map(item => routes.push(item));
+        }
+    },
   /*
   ** Build configuration
   */

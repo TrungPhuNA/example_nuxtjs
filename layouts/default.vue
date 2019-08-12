@@ -1,88 +1,46 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper">    
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+        <Header></Header>
+        <!-- <Menu/> -->
         <div class="container">
-            <div class="menu">
-                <ul>
-                    <li>
-                        <nuxt-link to="/">Home</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/about">About</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/article">Blog</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/">Product</nuxt-link>
-                    </li>
-                </ul>  
-            </div>
+            <route-vue></route-vue>
+            <nuxt />
         </div>
-        <nuxt/>
+        <!-- <vue-progress-bar></vue-progress-bar> -->
     </div>  
 </template>
 
 <script>
-    @import header from './../components/header.vue';
-    // export default {
+    import Vue from "vue";
+    import Header from "./../components/Header";
+    import Menu from "./../components/Menu";
+    
+    // new Vue({
+    //     router: router,
+    // })
 
-    // }
+    export default {
+        components : {
+           Header, Menu 
+        }
+    }
 </script>
 
-<style>
-    html {
-        font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-            Roboto, 'Helvetica Neue', Arial, sans-serif;
-        font-size: 16px;
-        word-spacing: 1px;
-        -ms-text-size-adjust: 100%;
-        -webkit-text-size-adjust: 100%;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        box-sizing: border-box;
+<style lang="scss">
+    body {
+        font-family: 'Roboto', sans-serif;
     }
-
-    *,
-    *:before,
-    *:after {
-    box-sizing: border-box;
-    margin: 0;
-    }
-    img { max-width: 100%;}
-    a {
-        text-decoration: none;
-    }
-    .container {
-        max-width: 1200px;
-        margin:0 auto;
-    }
-    .header {
+    .main_content {
+        margin-top: 20px;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        .left {
+            flex: 0 0 70%;
+            margin-right: 10px;
+        }
+        .right {
+            flex: 0 0 30%;
+        }
     }
-    .header_link  a{
-        color: #03a87c;
-        padding: 5px 10px;
-        text-decoration: none;
-    }
-    .header_link a:last-child{
-        border:1px solid #03a87c;
-    }
-
-    .menu  ul{
-        list-style: none;
-        display: flex;
-    }
-
-    .menu  ul li {
-
-    }
-    .menu  ul li a {
-        color: #333;
-        padding: 5px 7px;
-        text-decoration: none;
-        font-weight: 400;
-    }
-
 </style>

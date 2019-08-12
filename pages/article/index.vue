@@ -1,56 +1,65 @@
 <template>
-    <div class="container">
-        <div class="article">
-            <div class="article_left" id="article_list">
-                <h1>Danh sách bài viết</h1>
-                <div class="form_search" style="margin-bottom:15px;">
-                    <form action="" style="display:flex;">
-                        <input type="text" name="k" style="display:block;width:80%;height:30px;">
-                        <button v-on:click="search">Search</button>
-                    </form>
-                </div>
-                <div class="article_list" v-for="(article) in articles" :key="article.id" >
-                    <div class="article_item">
-                        <div class="item_info">
-                            <h3>
-                                <nuxt-link :to="/article/ +  article.id">
-                                    {{  article.a_name }}      
-                                </nuxt-link>
-                            </h3>
-                            <p>{{  article.a_description }}</p>
-                            <a class="item_cate" href="">Kiến thức lập trình</a>
-                            <span>Posted by [Admin] | {{ article.created_at }}</span>
-                        </div>
-                        <a href="">
-                            <img src="~assets/images/banner_2.jpeg" alt="">
-                        </a>
+    <div class="main_content">
+        <div class="left">
+            <div class="articles">
+                <div class="item" v-for="article in articles" :key="article.id" >
+                    <div class="item_avatar">
+                        <nuxt-link to="/">
+                            <img src="https://images.viblo.asia/avatar/36f10f4d-747b-40f3-ad9c-80ad5118a9b8.jpg" alt="">
+                        </nuxt-link>
+                    </div>
+                    <div class="item_content">
+                        <p class="item_info">
+                            <nuxt-link :to="'/article/'+article.id">[Admin]</nuxt-link>
+                            <span>{{  article.created_at }}</span>
+                            <span><i class="fa fa-link" aria-hidden="true"></i></span>
+                        </p>
+                        <h3>
+                            <nuxt-link :to="'/article/'+article.id">{{ article.a_name }}</nuxt-link>
+                        </h3>
+                        <p class="item_tag">
+                            <nuxt-link to="/">Html</nuxt-link>
+                            <nuxt-link to="/">CSS</nuxt-link>
+                        </p>
+                        <p class="item_description">{{  article.a_description }}</p>
+                        <p class="item_footer">
+                            <span><i class="fa fa-eye" aria-hidden="true"></i> 23</span>
+                            <span><i class="fa fa-link" aria-hidden="true"></i> 0</span>
+                            <span><i class="fa fa-comment-o" aria-hidden="true"></i> 0</span>
+                        </p>
                     </div>
                 </div>
-                <!-- <div class="paginate" v-if="next">
-                    <nuxt-link to="{{  next  }}">Trang tiếp</nuxt-link>
-                </div> -->
                 <div class="paginate" style="text-align: center;">
-                    <button class="" v-on:click="fetchPaginate(pagination.prev_page_url)" :disabled="!pagination.prev_page_url">Trang Trước</button>
-                    <button class="" v-on:click="fetchPaginate(pagination.next_page_url)" :disabled="!pagination.next_page_url">Trang Sau</button>
-                    <!-- <div v-if=next_page>
-                        <nuxt-link :to="{ name: 'article',query:{ page: next_page}}" v-on:click="nextPage">Trang tiếp</nuxt-link>
-                    </div>
-                    <div v-else>
-                        <nuxt-link to="/">Trang Trước</nuxt-link>
-                        
-                    </div> -->
+                    <button class="btn btn-light" v-on:click="fetchPaginate(pagination.prev_page_url)" :disabled="!pagination.prev_page_url">Trang Trước</button>
+                    <button class="btn btn-light" v-on:click="fetchPaginate(pagination.next_page_url)" :disabled="!pagination.next_page_url">Trang Sau</button>
                 </div>
+            </div>   
+        </div>
+        <div class="right">
+            <div class="title">
+                <h3>Article Hot</h3>
             </div>
-            <div class="article_right">
-                <h1>Bài viết nổi bật</h1>
+            <div class="article_sidebar">
+                <div class="item" v-for="i in 10" :key="i">
+                    <h4>
+                        <nuxt-link to="">[Android] Hỏi về lên lịch lúc killed app</nuxt-link>
+                    </h4>
+                    <p class="item_info">
+                        <span><i class="fa fa-eye" aria-hidden="true"></i> 23</span>
+                        <span><i class="fa fa-link" aria-hidden="true"></i> 0</span>
+                        <span><i class="fa fa-comment-o" aria-hidden="true"></i> 0</span>
+                    </p>
+                    <p class="item_auth"><nuxt-link to="/">[Admin]</nuxt-link></p>
+                </div>
             </div>
         </div>
     </div>
 </template>
+
 <script>
     import axios from 'axios';  
-    import Vue from 'vue'    
- 
+    // import Vue from 'vue'
+
     export default {
         data () {
             return {
@@ -60,6 +69,8 @@
                 params : {}
             }
         },
+
+        // layout : 'default',
 
         creating(){
 
@@ -79,11 +90,10 @@
             getArticle() 
             {
                 let params = this.params;
-                console.log(params, "Tham số");
                 axios.get(this.url, params).then(response => {
                     this.articles    = response.data.data.data
                     this.pagination  = response.data.data; 
-                    console.log(response.data);
+                
                 }).catch(e => {
                     console.log(e);
                     // this.errors.push(e)
@@ -94,69 +104,112 @@
             {
                 this.url = url;
                 this.getArticle();
-            },
-
-            search(event) 
-            {
-                event.preventDefault();
-                this.params = { q : 'a'}
-                this.getArticle();
             }
         }
     }
-
 </script>
-<style>
-    .article {
-        display: flex;
-        margin-bottom: 20px;
-    }
-    .article_left {
-        flex: 0 0 60%;
-        margin-right: 15px;
-    }
-    .article_right {
-        flex: 0 0 40%;
-    }
-    .article_item {
-        display: flex;
-        justify-content:space-between;
-    }
 
-    .article_item  a img {
-        width: 152px;
-        height: 123px;
+<style lang="scss" scope>
+    .title  {
+        h3 {
+            padding: 5px;
+            border-bottom: 1px solid #f2f2f2;
+            margin-bottom: 5px;
+        }
     }
-    .article_item .item_info {
-        flex: 0 0 70%;
+    .articles {
+        .item {
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            display: flex;
+            border-bottom:1px solid #f2f2f2;
+            &:last-child{
+                border-bottom: none;
+            }
+
+            &_avatar{
+                width: 40px;
+                margin-right: 10px;
+                a {
+                    display: block;
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                    }
+                }
+            } 
+            &_info {
+                font-size: 14px;
+                color: #9b9b9b;
+                a {
+                    &:first-child{
+                        color: #03a87c;
+                    }
+                }
+            }  
+            &_tag {
+                a {
+                    font-size: 12px;
+                    background-color: rgba(144,147,153,.1);
+                    border-color: rgba(144,147,153,.2);
+                    color: #909399;
+                    height: 20px;
+                    padding: 0 5px;
+                    line-height: 19px;
+                    border-radius: 5px;
+                }
+            }
+
+            h3 a {
+                font-size: 18px;
+                color: #444;
+            }
+            &_content {
+                flex: 0 0 90%;
+            }
+
+            &_description {
+                color: #333;
+                font-size:14px;
+                margin: 5px 0;
+            }
+            &_footer {
+                color:#666;
+                font-size: 13px;
+                span {
+                    margin-right: 5px;
+                }
+            }
+        }
     }
-    .article_item p,.article_item span {
-        font-size: 14px;
-        color: #666;
-    }
-    .item_cate {
-        display: block;
-        font-size: 14px;
-        color:333;
-    }
-    h1 {
-        margin: 10px 0;
-        font-size: 24px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #f2f2f2;
-    }
-    h3 a {
-        color: #333;
-        font-size: 20px;
-    }
-    .paginate a {
-        color: #666;
-        padding: 5px 10px;
-        border: 1px solid #03a87c;
-        display: block;
-        margin-top: 30px;
-        width: 100px;
-        margin: 0 auto;
-        border-radius: 5px;
+    .article_sidebar {
+        .item {
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #f2f2f2;
+            &:last-child{
+                border-bottom: none;
+            }
+            h4 { 
+                a {
+                    font-size: 16px;    
+                    color:#333;
+                    font-weight: 500;
+                }
+            }
+            &_info {
+                span {
+                    font-size: 14px;
+                    color: #9b9b9b;
+                }
+            }
+            &_auth {
+                a {
+                    color: #03a87c;
+                    font-size: 14px;
+                }
+            }
+        }
     }
 </style>

@@ -17,10 +17,6 @@
     import Header from "~/components/AppHeader";
     import Menu from "~/components/AppMenu";
     
-    // new Vue({
-    //     router: router,
-    // })
-
     export default {
         components : {
            Header, Menu 

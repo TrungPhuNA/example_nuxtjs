@@ -19,4 +19,8 @@ $ npm run start
 $ npm run generate
 ```
 
+# run product 
+    - npm run build
+    - pm2 start npm --name "nuxt" -- start
+
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

@@ -10,12 +10,12 @@
                     </div>
                     <div class="item_content">
                         <p class="item_info">
-                            <nuxt-link :to="'/article/'+article.id">[Admin]</nuxt-link>
+                            <nuxt-link :to="{ name: 'ArticleDetail', params: {id: article.id,slug:article.a_slug}}">[Admin]</nuxt-link>
                             <span>{{  article.created_at }}</span>
                             <span><i class="fa fa-link" aria-hidden="true"></i></span>
                         </p>
                         <h3>
-                            <nuxt-link :to="'/article/'+article.id">{{ article.a_name }}</nuxt-link>
+                            <nuxt-link :to="{ name: 'ArticleDetail', params: {id: article.id,slug:article.a_slug}}">{{ article.a_name }}</nuxt-link>
                         </h3>
                         <p class="item_tag">
                             <nuxt-link to="/">Html</nuxt-link>

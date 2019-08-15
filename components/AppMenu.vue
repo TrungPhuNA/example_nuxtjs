@@ -17,7 +17,7 @@
             </ul>  
         </div>
     </div> 
-</template>
+</template> 
 
 <style lang="scss" scoped>
     .menu {

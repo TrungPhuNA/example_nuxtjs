@@ -35,14 +35,24 @@
 <script>
     import axios from 'axios';  
     // import Vue from 'vue'
+    import Vue from 'vue'
 
     export default {
         data () {
             return {
-                
-                url : `http://mmov2.codethue.net/api/article`,
+                url : `http://demo.mmolab.abc/v1/api/article`,
                 article: null,
                 id : null
+            }
+        },
+
+        head () {
+            let article = this.article;
+            return {
+                title: article ? article.a_name : '',
+                meta: [
+                    { hid: 'description', name: 'description', content: 'About our company Nuxt.js ' }
+                ]
             }
         },
 
@@ -73,12 +83,6 @@
                     console.log(e);
                     // this.errors.push(e)
                 })
-            },
-
-            fetchPaginate(url) 
-            {
-                this.url = url;
-                this.getArticle();
             }
         }
     }

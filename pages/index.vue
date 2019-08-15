@@ -63,26 +63,30 @@
     export default {
         data () {
             return {
-                url : `http://mmov2.codethue.net/api/article`,
+                url : `http://demo.mmolab.abc/v1/api/article`,
                 articles: null,
                 pagination : [],
                 params : {}
             }
         },
 
+        beforeCreate() {
+            //beforeCreate được chạy tại quá trình khởi tạo của component,
+            console.log('Nothing gets called before me!')
+        },
+
         head () {
             return {
-                title: 'About Us - Nuxt.js',
+                title: 'Xin chào - Đây là trang chủ blog được xây dựng - Nuxt.js',
                 meta: [
                     { hid: 'description', name: 'description', content: 'About our company Nuxt.js ' }
                 ]
             }
         },
 
-        // layout : 'default',
-
         creating(){
-
+            //bạn có thể truy xuất được dữ liệu "phản ứng" và events đã được hoạt động.
+            // Các template và Virtual DOM lúc này chưa được mount và render.
         },
 
         mounting()
@@ -98,8 +102,8 @@
         methods : {
             getArticle() 
             {
-                let params = this.params;
-                axios.get(this.url, params).then(response => {
+            
+                axios.get(this.url).then(response => {
                     this.articles    = response.data.data.data
                     this.pagination  = response.data.data; 
                 
@@ -217,6 +221,17 @@
                 a {
                     color: #03a87c;
                     font-size: 14px;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 600px)
+    {
+        .articles {
+            .item {
+                &_avatar{
+                    flex: 0 0 15%;
                 }
             }
         }

@@ -40,9 +40,9 @@
                 <h3>Article Hot</h3>
             </div>
             <div class="article_sidebar">
-                <div class="item" v-for="i in 10" :key="i">
+                <div class="item" v-for="article in articles" :key="article.id" >
                     <h4>
-                        <nuxt-link to="">[Android] Hỏi về lên lịch lúc killed app</nuxt-link>
+                        <nuxt-link :to="{ name: 'ArticleDetail', params: {id: article.id,slug:article.a_slug}}">{{ article.a_name }}</nuxt-link>
                     </h4>
                     <p class="item_info">
                         <span><i class="fa fa-eye" aria-hidden="true"></i> 23</span>
@@ -58,12 +58,11 @@
 
 <script>
     import axios from 'axios';  
-    // import Vue from 'vue'
 
     export default {
         data () {
             return {
-                url : `http://demo.mmolab.abc/api/article`,
+                url : `http://demo.mmolab.abc/v1/api/article`,
                 articles: null,
                 pagination : [],
                 params : {}

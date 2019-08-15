@@ -23,4 +23,7 @@ $ npm run generate
     - npm run build
     - pm2 start npm --name "nuxt" -- start
 
+# Test
+    - http://localhost:3000/bai-viet/cach-kiem-tien-ezbooks-2-8 | vue-toc
+
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

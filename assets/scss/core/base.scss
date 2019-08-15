@@ -53,11 +53,52 @@ a {
         outline: none;
     }
 }
+
 .btn-light {
     color: #212529;
     background-color: #f8f9fa;
     border-color: #f8f9fa;
 }
+.btn-primary
+{
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/** form **/
+.form-group {
+    margin: 5px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    &:focus {
+        outline: none;
+        border-color: #409eff;
+    }
+}
+
+input[type=text],input[type=email],input[type=password],
+input[type=phone],input[type=number] {
+    font-size: 14px;
+}
+.has-error {
+    border: 1px solid red;
+}
+
 .paginate {
     button {
         font-size: 13px;
@@ -65,4 +106,13 @@ a {
 }
 ul {
     list-style: none;
+}
+
+/** TEXT **/
+.text-error {
+    font-size: 13px;
+    color: red;
+}
+.text-primary {
+    color: #007bff!important;
 }

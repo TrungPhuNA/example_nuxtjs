@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid header-fluid">
+    <div class="container-fluid header-fluid" id="header">
         <div class="header">
             <div class="header_logo">
                 <nuxt-link :to="{ name : 'Home'}">
@@ -17,12 +17,27 @@
                 </ul>
             </div>
             <div class="header_account">
-                <nuxt-link to="/auth/register">Đăng Ký</nuxt-link>
-                <nuxt-link to="/auth/login">Đăng Nhập</nuxt-link>
+                <nuxt-link :to="{ name : 'Register'}">Đăng Ký</nuxt-link>
+                <nuxt-link :to="{ name : 'Login'}">Đăng Nhập</nuxt-link>
             </div>
         </div>
     </div> 
 </template>
+
+<script>
+    export default {
+        data () {
+            return {
+                showNavbar: true,
+                lastScrollPosition: 0
+            }
+        },
+
+        mounted() {
+        
+        }
+    }
+</script>  
 
 <style lang="scss" scoped>
     .header-fluid {
@@ -34,7 +49,7 @@
         align-items: center;
         margin: 5px auto;
         max-width: 1170px;
-        width: 1170px;
+        width: 100%;
         &_logo {
             flex:0 0 5%;
             a {
@@ -70,6 +85,22 @@
                 &:last-child{
                     border:1px solid #03a87c;
                 }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 600px)
+    {
+        .header {
+            padding:0 5px;
+            &_logo {
+                flex: 0 0 25%;
+            }
+            &_nav {
+                display: none;
+            }
+            &_account {
+                flex: 0 0 75%;
             }
         }
     }
